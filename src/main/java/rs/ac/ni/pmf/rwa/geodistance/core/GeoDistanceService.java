@@ -1,20 +1,19 @@
 package rs.ac.ni.pmf.rwa.geodistance.core;
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 import rs.ac.ni.pmf.rwa.geodistance.core.model.GeoDistanceResult;
 import rs.ac.ni.pmf.rwa.geodistance.core.model.Location;
 import rs.ac.ni.pmf.rwa.geodistance.shared.DistanceUnit;
 
+@Service
+@RequiredArgsConstructor
 public class GeoDistanceService
 {
     // radius in kilometers
     private final static double EARTH_RADIUS = 6371;
 
     private final LocationProvider locationProvider;
-
-    public GeoDistanceService(final LocationProvider locationProvider)
-    {
-        this.locationProvider = locationProvider;
-    }
 
     public GeoDistanceResult distance(
             final String postalCode1,
