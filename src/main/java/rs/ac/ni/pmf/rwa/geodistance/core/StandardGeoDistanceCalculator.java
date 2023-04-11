@@ -1,9 +1,7 @@
 package rs.ac.ni.pmf.rwa.geodistance.core;
 
-import org.springframework.stereotype.Component;
 import rs.ac.ni.pmf.rwa.geodistance.core.model.Location;
 
-@Component
 public class StandardGeoDistanceCalculator implements GeoDistanceCalculator
 {
 	// radius in kilometers

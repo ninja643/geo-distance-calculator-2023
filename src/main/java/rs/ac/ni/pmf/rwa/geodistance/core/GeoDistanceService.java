@@ -1,14 +1,10 @@
 package rs.ac.ni.pmf.rwa.geodistance.core;
 
-import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
 import rs.ac.ni.pmf.rwa.geodistance.core.model.GeoDistanceResult;
 import rs.ac.ni.pmf.rwa.geodistance.core.model.Location;
 import rs.ac.ni.pmf.rwa.geodistance.shared.DistanceUnit;
 
-import java.util.List;
-
-@Service
 @RequiredArgsConstructor
 public class GeoDistanceService
 {

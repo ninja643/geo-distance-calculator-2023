@@ -1,13 +1,12 @@
 package rs.ac.ni.pmf.rwa.geodistance.data;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import org.springframework.stereotype.Component;
 import rs.ac.ni.pmf.rwa.geodistance.core.LocationProvider;
 import rs.ac.ni.pmf.rwa.geodistance.core.model.Location;
 
-@Component
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 public class MemoryLocationProvider implements LocationProvider
 {
 	private final Map<String, Location> locations = Map.of(
