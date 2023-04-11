@@ -1,6 +1,7 @@
 package rs.ac.ni.pmf.rwa.geodistance.core;
 
 import java.util.Map;
+import java.util.stream.Stream;
 import rs.ac.ni.pmf.rwa.geodistance.core.model.Location;
 
 public class TestLocationProvider implements LocationProvider
@@ -14,5 +15,11 @@ public class TestLocationProvider implements LocationProvider
 	public Location getLocation(String postalCode)
 	{
 		return locations.get(postalCode);
+	}
+
+	@Override
+	public Stream<Location> getLocations()
+	{
+		return locations.values().stream();
 	}
 }
