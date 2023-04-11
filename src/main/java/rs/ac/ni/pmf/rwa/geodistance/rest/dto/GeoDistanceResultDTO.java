@@ -7,10 +7,10 @@ import lombok.Value;
 @Builder
 public class GeoDistanceResultDTO
 {
-    double latitude1;
-    double longitude1;
-    double latitude2;
-    double longitude2;
-    String unit;
-    double distance;
+	double latitude1;
+	double longitude1;
+	double latitude2;
+	double longitude2;
+	String unit;
+	double distance;
 }

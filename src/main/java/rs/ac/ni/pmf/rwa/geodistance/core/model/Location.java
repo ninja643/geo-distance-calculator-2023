@@ -5,7 +5,7 @@ import lombok.Value;
 @Value
 public class Location
 {
-    String postalCode;
-    double latitude;
-    double longitude;
+	String postalCode;
+	double latitude;
+	double longitude;
 }

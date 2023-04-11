@@ -4,10 +4,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class GeoDistanceCalculatorApplicationTests {
+class GeoDistanceCalculatorApplicationTests
+{
 
 	@Test
-	void contextLoads() {
+	void contextLoads()
+	{
 	}
-
 }
