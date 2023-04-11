@@ -1,5 +1,7 @@
 package rs.ac.ni.pmf.rwa.geodistance.data;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import org.springframework.stereotype.Component;
 import rs.ac.ni.pmf.rwa.geodistance.core.LocationProvider;
@@ -17,5 +19,11 @@ public class MemoryLocationProvider implements LocationProvider
 	public Location getLocation(String postalCode)
 	{
 		return locations.get(postalCode);
+	}
+
+	@Override
+	public List<Location> getLocations()
+	{
+		return new ArrayList<>(locations.values());
 	}
 }

@@ -5,8 +5,11 @@ import lombok.RequiredArgsConstructor;
 import rs.ac.ni.pmf.rwa.geodistance.core.GeoDistanceService;
 import rs.ac.ni.pmf.rwa.geodistance.core.model.GeoDistanceResult;
 import rs.ac.ni.pmf.rwa.geodistance.rest.dto.GeoDistanceResultDTO;
+import rs.ac.ni.pmf.rwa.geodistance.rest.dto.LocationDTO;
 import rs.ac.ni.pmf.rwa.geodistance.rest.mapper.GeoDistanceResultMapper;
 import rs.ac.ni.pmf.rwa.geodistance.shared.DistanceUnit;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
