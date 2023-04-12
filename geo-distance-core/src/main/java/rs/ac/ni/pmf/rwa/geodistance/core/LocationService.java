@@ -14,4 +14,5 @@ public class LocationService
 	{
 		return locationProvider.getLocations();
 	}
+
 }
