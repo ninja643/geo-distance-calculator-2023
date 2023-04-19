@@ -1,15 +1,14 @@
 package rs.ac.ni.pmf.rwa.geodistance.rest;
 
-import org.springframework.web.bind.annotation.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import rs.ac.ni.pmf.rwa.geodistance.core.GeoDistanceService;
 import rs.ac.ni.pmf.rwa.geodistance.core.model.GeoDistanceResult;
 import rs.ac.ni.pmf.rwa.geodistance.rest.dto.GeoDistanceResultDTO;
-import rs.ac.ni.pmf.rwa.geodistance.rest.dto.LocationDTO;
 import rs.ac.ni.pmf.rwa.geodistance.rest.mapper.GeoDistanceResultMapper;
 import rs.ac.ni.pmf.rwa.geodistance.shared.DistanceUnit;
-
-import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
