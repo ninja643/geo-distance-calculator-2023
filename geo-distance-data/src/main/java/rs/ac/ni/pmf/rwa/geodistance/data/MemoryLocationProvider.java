@@ -6,6 +6,7 @@ import rs.ac.ni.pmf.rwa.geodistance.core.model.Location;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public class MemoryLocationProvider implements LocationProvider
 {
@@ -15,9 +16,9 @@ public class MemoryLocationProvider implements LocationProvider
 	);
 
 	@Override
-	public Location getLocation(String postalCode)
+	public Optional<Location> getLocation(String postalCode)
 	{
-		return locations.get(postalCode);
+		return Optional.ofNullable(locations.get(postalCode));
 	}
 
 	@Override
