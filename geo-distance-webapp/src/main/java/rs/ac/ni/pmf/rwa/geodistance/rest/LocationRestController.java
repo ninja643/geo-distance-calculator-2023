@@ -1,9 +1,9 @@
 package rs.ac.ni.pmf.rwa.geodistance.rest;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 import rs.ac.ni.pmf.rwa.geodistance.core.LocationService;
 import rs.ac.ni.pmf.rwa.geodistance.core.model.Location;
 import rs.ac.ni.pmf.rwa.geodistance.rest.dto.LocationDTO;
@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
+@Slf4j
 public class LocationRestController
 {
 	private final LocationService locationService;
@@ -32,5 +33,12 @@ public class LocationRestController
 	{
 		final Location location = locationService.getLocation(postalCode);
 		return locationMapper.toDto(location);
+	}
+
+	@PostMapping("/locations")
+	@ResponseStatus(HttpStatus.CREATED)
+	public void createLocation(@RequestBody final LocationDTO location)
+	{
+		locationService.createLocation(locationMapper.fromDto(location));
 	}
 }

@@ -10,4 +10,6 @@ public interface LocationProvider
 	Optional<Location> getLocation(final String postalCode);
 
 	List<Location> getLocations();
+
+	void saveLocation(final Location location);
 }

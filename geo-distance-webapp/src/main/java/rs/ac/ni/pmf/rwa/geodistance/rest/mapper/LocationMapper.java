@@ -15,4 +15,9 @@ public class LocationMapper
 				.longitude(location.getLongitude())
 				.build();
 	}
+
+	public Location fromDto(final LocationDTO dto)
+	{
+		return new Location(dto.getPostalCode(), dto.getLatitude(), dto.getLongitude());
+	}
 }
