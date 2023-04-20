@@ -2,6 +2,7 @@ package rs.ac.ni.pmf.rwa.geodistance.core;
 
 import lombok.RequiredArgsConstructor;
 import rs.ac.ni.pmf.rwa.geodistance.core.model.Location;
+import rs.ac.ni.pmf.rwa.geodistance.exception.UnknownLocationException;
 
 import java.util.List;
 
@@ -15,4 +16,9 @@ public class LocationService
 		return locationProvider.getLocations();
 	}
 
+	public Location getLocation(final String postalCode)
+	{
+		return locationProvider.getLocation(postalCode)
+				.orElseThrow(() -> new UnknownLocationException(postalCode));
+	}
 }
