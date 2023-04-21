@@ -13,5 +13,5 @@ public interface LocationProvider
 
 	void saveLocation(final Location location);
 
-    void removeLocation(String postalCode);
+    void removeLocation(final String postalCode);
 }

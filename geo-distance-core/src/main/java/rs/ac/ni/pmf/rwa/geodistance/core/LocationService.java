@@ -46,35 +46,34 @@ public class LocationService
 		}
 	}
 
-    public void updateLocation(String postalCode, Location location) {
-
-
-		if (locationProvider.getLocation(postalCode).isEmpty())
+    public void updateLocation(final String postalCode, final Location location)
+    {
+        if (locationProvider.getLocation(postalCode).isEmpty())
 		{
-			throw new UnknownLocationException(postalCode);
-		}
+            throw new UnknownLocationException(postalCode);
+        }
 
-		if(!postalCode.equals(location.getPostalCode())){
-
-			locationProvider.removeLocation(postalCode);
-
+		if (!postalCode.equals(location.getPostalCode()))
+		{
 			validatePostalCode(location.getPostalCode());
 
 			if (locationProvider.getLocation(postalCode).isPresent())
 			{
 				throw new DuplicatePostalCodeException(postalCode);
 			}
+
+			locationProvider.removeLocation(postalCode);
 		}
 
-		locationProvider.saveLocation(location);
-	}
+        locationProvider.saveLocation(location);
+    }
 
-	public void deleteLocation(String postalCode) {
-		if (locationProvider.getLocation(postalCode).isEmpty())
+    public void deleteLocation(final String postalCode)
+    {
+        if (locationProvider.getLocation(postalCode).isEmpty())
 		{
-			throw new UnknownLocationException(postalCode);
-		}
-		locationProvider.removeLocation(postalCode);
-
-	}
+            throw new UnknownLocationException(postalCode);
+        }
+        locationProvider.removeLocation(postalCode);
+    }
 }

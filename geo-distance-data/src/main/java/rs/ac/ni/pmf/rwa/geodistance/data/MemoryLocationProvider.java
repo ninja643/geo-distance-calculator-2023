@@ -34,7 +34,8 @@ public class MemoryLocationProvider implements LocationProvider
 	}
 
 	@Override
-	public void removeLocation(String postalCode) {
+	public void removeLocation(String postalCode)
+	{
 		locations.remove(postalCode);
 	}
 }
