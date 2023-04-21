@@ -12,4 +12,6 @@ public interface LocationProvider
 	List<Location> getLocations();
 
 	void saveLocation(final Location location);
+
+    void removeLocation(String postalCode);
 }

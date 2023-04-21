@@ -41,4 +41,18 @@ public class LocationRestController
 	{
 		locationService.createLocation(locationMapper.fromDto(location));
 	}
+
+	@PutMapping("/locations/{postal-code}")
+	@ResponseStatus(HttpStatus.OK)
+	public void updateLocation(@PathVariable(name = "postal-code") final String postalCode,@RequestBody final LocationDTO location)
+	{
+		locationService.updateLocation(postalCode,locationMapper.fromDto(location));
+	}
+
+	@DeleteMapping("/locations/{postal-code}")
+	@ResponseStatus(HttpStatus.OK)
+	public void deleteLocation(@PathVariable(name = "postal-code") final String postalCode)
+	{
+		locationService.deleteLocation(postalCode);
+	}
 }
