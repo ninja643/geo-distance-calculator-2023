@@ -20,8 +20,7 @@ public class LocationService
 
 	public Location getLocation(final String postalCode)
 	{
-		return locationProvider.getLocation(postalCode)
-				.orElseThrow(() -> new UnknownLocationException(postalCode));
+		return locationProvider.getLocation(postalCode).orElseThrow(() -> new UnknownLocationException(postalCode));
 	}
 
 	public void createLocation(final Location location)
@@ -48,18 +47,17 @@ public class LocationService
 
 	public void updateLocation(final String postalCode, final Location location)
 	{
-		if (locationProvider.getLocation(postalCode).isEmpty())
-		{
-			throw new UnknownLocationException(postalCode);
-		}
+		locationProvider.getLocation(postalCode)
+				.orElseThrow(() -> new UnknownLocationException(postalCode));
+		final String newPostalCode = location.getPostalCode();
 
-		if (!postalCode.equals(location.getPostalCode()))
+		if (!postalCode.equals(newPostalCode))
 		{
-			validatePostalCode(location.getPostalCode());
+			validatePostalCode(newPostalCode);
 
-			if (locationProvider.getLocation(postalCode).isPresent())
+			if (locationProvider.getLocation(newPostalCode).isPresent())
 			{
-				throw new DuplicatePostalCodeException(postalCode);
+				throw new DuplicatePostalCodeException(newPostalCode);
 			}
 
 			locationProvider.removeLocation(postalCode);
