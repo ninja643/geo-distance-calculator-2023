@@ -16,7 +16,7 @@
     <packaging>pom</packaging>
 
     <name>Geo Distance Calculator</name>
-	<description>Geo Distance Calculator based on postal codes</description>
+    <description>Geo Distance Calculator based on postal codes</description>
     <modules>
         <module>geo-distance-core</module>
         <module>geo-distance-data</module>

@@ -10,12 +10,12 @@ public class GeoDistanceResultMapper
 	public GeoDistanceResultDTO toDto(final GeoDistanceResult data)
 	{
 		return GeoDistanceResultDTO.builder()
-			.longitude1(data.getLocation1().getLongitude())
-			.latitude1(data.getLocation1().getLatitude())
-			.longitude2(data.getLocation2().getLongitude())
-			.latitude2(data.getLocation2().getLatitude())
-			.unit(data.getUnit().name())
-			.distance(data.getDistance())
-			.build();
+				.longitude1(data.getLocation1().getLongitude())
+				.latitude1(data.getLocation1().getLatitude())
+				.longitude2(data.getLocation2().getLongitude())
+				.latitude2(data.getLocation2().getLatitude())
+				.unit(data.getUnit().name())
+				.distance(data.getDistance())
+				.build();
 	}
 }
