@@ -32,4 +32,10 @@ public class MemoryLocationProvider implements LocationProvider
 		log.debug("Saving location {}", location);
 		locations.put(location.getPostalCode(), location);
 	}
+
+	@Override
+	public void removeLocation(String postalCode)
+	{
+		locations.remove(postalCode);
+	}
 }
