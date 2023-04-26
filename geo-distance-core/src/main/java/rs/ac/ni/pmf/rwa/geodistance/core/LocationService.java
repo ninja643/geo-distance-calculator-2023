@@ -20,7 +20,8 @@ public class LocationService
 
 	public Location getLocation(final String postalCode)
 	{
-		return locationProvider.getLocation(postalCode).orElseThrow(() -> new UnknownLocationException(postalCode));
+		return locationProvider.getLocation(postalCode)
+				.orElseThrow(() -> new UnknownLocationException(postalCode));
 	}
 
 	public void createLocation(final Location location)
