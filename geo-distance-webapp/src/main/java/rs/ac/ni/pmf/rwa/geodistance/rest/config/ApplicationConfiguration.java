@@ -4,14 +4,15 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import rs.ac.ni.pmf.rwa.geodistance.core.*;
 import rs.ac.ni.pmf.rwa.geodistance.data.MemoryLocationProvider;
+import rs.ac.ni.pmf.rwa.geodistance.data.dao.LocationDao;
 
 @Configuration
 public class ApplicationConfiguration
 {
 	@Bean
-	public LocationProvider getLocationProvider()
+	public LocationProvider getLocationProvider(final LocationDao locationDao)
 	{
-		return new MemoryLocationProvider();
+		return new MemoryLocationProvider(locationDao);
 	}
 
 	@Bean
