@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import rs.ac.ni.pmf.rwa.geodistance.core.*;
 import rs.ac.ni.pmf.rwa.geodistance.data.MemoryLocationProvider;
 import rs.ac.ni.pmf.rwa.geodistance.data.dao.LocationDao;
+import rs.ac.ni.pmf.rwa.geodistance.data.dao.UserDao;
 
 @Configuration
 public class ApplicationConfiguration

@@ -12,6 +12,9 @@ public class LocationEntityMapper
 
 	public static LocationEntity toEntity(final Location location)
 	{
-		return new LocationEntity(location.getPostalCode(), location.getLatitude(), location.getLongitude());
+		return new LocationEntity(
+				location.getPostalCode(),
+				location.getLatitude(),
+				location.getLongitude());
 	}
 }
