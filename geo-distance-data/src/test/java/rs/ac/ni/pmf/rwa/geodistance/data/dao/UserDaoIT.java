@@ -31,18 +31,35 @@ class UserDaoIT
 					.dob(LocalDate.of(1980, Month.FEBRUARY, 10))
 					.gender(Gender.MALE)
 					.build(),
+			UserEntity.builder()
+					.firstName("Mira")
+					.lastName("Petrovic")
+					.email("mira@gmail.com")
+					.dob(LocalDate.of(1990, Month.APRIL, 15))
+					.gender(Gender.FEMALE)
+					.build(),
+			UserEntity.builder()
+					.firstName("Zika")
+					.lastName("Petrovic")
+					.email("zika@gmail.com")
+					.dob(LocalDate.of(1986, Month.FEBRUARY, 10))
+					.gender(Gender.MALE)
+					.build(),
+			UserEntity.builder()
+					.firstName("Mika")
+					.lastName("Mikic")
+					.email("mika@gmail.com")
+					.dob(LocalDate.of(1980, Month.FEBRUARY, 10))
+					.gender(Gender.MALE)
+					.build(),
+			UserEntity.builder()
+					.firstName("Mira")
+					.lastName("Mitrovic")
+					.email("mira2@gmail.com")
+					.dob(LocalDate.of(1991, Month.APRIL, 15))
+					.gender(Gender.FEMALE)
+					.build());
 
-			new UserEntity(null, "Mira", "Petrovic", "mira@gmail.com", LocalDate.of(1990, Month.APRIL, 15),
-						   Gender.FEMALE),
-
-			new UserEntity(null, "Zika", "Petrovic", "zika@gmail.com", LocalDate.of(1986, Month.FEBRUARY, 10),
-						   Gender.MALE),
-
-			new UserEntity(null, "Mika", "Mikic", "mika@gmail.com", LocalDate.of(1986, Month.FEBRUARY, 10),
-						   Gender.MALE),
-
-			new UserEntity(null, "Mira", "Mitrovic", "mira2@gmail.com", LocalDate.of(1991, Month.APRIL, 15),
-						   Gender.FEMALE));
 
 	@BeforeEach
 	public void initializeDatabase()
@@ -62,5 +79,14 @@ class UserDaoIT
 	{
 		List<UserEntity> users = userDao.findByFirstNameStartsWith("Mi");
 		assertThat(users).hasSize(3);
+	}
+
+	@Test
+	public void shouldGetUserById()
+	{
+		final UserEntity user = userDao.findById(2).orElseThrow();
+		System.out.println();
+		System.out.println(user);
+		System.out.println();
 	}
 }

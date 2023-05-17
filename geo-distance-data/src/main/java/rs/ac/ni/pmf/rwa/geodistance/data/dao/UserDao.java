@@ -6,9 +6,6 @@ import rs.ac.ni.pmf.rwa.geodistance.shared.Gender;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Stream;
 
 public interface UserDao extends JpaRepository<UserEntity, Integer>
 {

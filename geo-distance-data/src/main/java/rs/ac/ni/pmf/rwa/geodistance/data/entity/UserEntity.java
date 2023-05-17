@@ -17,6 +17,7 @@ public class UserEntity
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	Integer id;
+
 	String firstName;
 	String lastName;
 	String email;
@@ -24,4 +25,18 @@ public class UserEntity
 
 	@Enumerated(EnumType.STRING)
 	Gender gender;
+
+	@Transient
+	String fullName;
+
+	@Transient
+	Integer age;
+
+	@PostLoad
+	protected void computeTransientValues()
+	{
+		System.out.println("Calling post load");
+		fullName = firstName + " " + lastName;
+		age = 1;
+	}
 }
