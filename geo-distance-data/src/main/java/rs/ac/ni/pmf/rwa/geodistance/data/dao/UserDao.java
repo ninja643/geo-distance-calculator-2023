@@ -22,7 +22,7 @@ public interface UserDao extends JpaRepository<UserEntity, Integer>
 
 	List<UserEntity> findByDobBetween(LocalDate start, LocalDate end);
 
-	List<UserEntity> findByFirstNameStartsWithAndDobBeforeAndEmailContainingIgnoreCase();
+//	List<UserEntity> findByFirstNameStartsWithAndDobBeforeAndEmailContainingIgnoreCase();
 
 
 }
