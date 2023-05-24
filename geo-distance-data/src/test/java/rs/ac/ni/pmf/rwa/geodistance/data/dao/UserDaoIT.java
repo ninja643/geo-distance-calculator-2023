@@ -7,10 +7,12 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.ContextConfiguration;
 import rs.ac.ni.pmf.rwa.geodistance.data.TestConfiguration;
 import rs.ac.ni.pmf.rwa.geodistance.data.entity.UserEntity;
+import rs.ac.ni.pmf.rwa.geodistance.data.entity.projection.IUserLite;
 import rs.ac.ni.pmf.rwa.geodistance.shared.Gender;
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.time.Period;
 import java.util.Arrays;
 import java.util.List;
 
@@ -88,5 +90,47 @@ class UserDaoIT
 		System.out.println();
 		System.out.println(user);
 		System.out.println();
+	}
+
+	@Test
+	public void shouldGetUsersByMyGetUsersMethod()
+	{
+		final List<UserEntity> users = userDao.myFindUsers("Petar");
+		users.forEach(System.out::println);
+	}
+
+	@Test
+	public void shouldGetLastNames()
+	{
+		userDao.getLastNamesByFirstName("Petar").forEach(System.out::println);
+	}
+
+	@Test
+	public void shouldGetAllUsersByQuery()
+	{
+		final List<Object[]> users = userDao.getUsersLite();
+		for (Object[] userRow : users)
+		{
+			LocalDate dob = (LocalDate) userRow[2];
+			Period period = Period.between(dob, LocalDate.now());
+			System.out.println(userRow[0] + ", " + userRow[1] + ": " + period.getYears());
+		}
+	}
+
+	@Test
+	public void shouldGetUsersLite()
+	{
+		userDao.getUsersLite2().forEach(System.out::println);
+	}
+
+	@Test
+	public void shouldGetUsersLite3()
+	{
+		final List<IUserLite> users = userDao.getUsersLite3();
+
+		for (final IUserLite user : users)
+		{
+			System.out.println(user.getFirst() + " " + user.getLast() + ": " + user.getEmail());
+		}
 	}
 }

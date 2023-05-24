@@ -15,6 +15,7 @@ public class LocationEntityMapper
 		return new LocationEntity(
 				location.getPostalCode(),
 				location.getLatitude(),
-				location.getLongitude());
+				location.getLongitude(),
+				null);
 	}
 }

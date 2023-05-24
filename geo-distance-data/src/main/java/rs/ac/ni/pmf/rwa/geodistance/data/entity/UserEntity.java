@@ -5,6 +5,7 @@ import rs.ac.ni.pmf.rwa.geodistance.shared.Gender;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -26,6 +27,9 @@ public class UserEntity
 	@Enumerated(EnumType.STRING)
 	Gender gender;
 
+	@OneToMany(mappedBy = "editedBy")
+	List<LocationEntity> editedLocations;
+
 	@Transient
 	String fullName;
 
@@ -33,7 +37,7 @@ public class UserEntity
 	Integer age;
 
 	@PostLoad
-	protected void computeTransientValues()
+	public void computeTransientValues()
 	{
 		System.out.println("Calling post load");
 		fullName = firstName + " " + lastName;

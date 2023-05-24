@@ -1,23 +1,22 @@
 package rs.ac.ni.pmf.rwa.geodistance.data.entity;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "locations")
 @Data
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
+@Builder
 public class LocationEntity
 {
 	@Id
 	String postalCode;
 	double latitude;
 	double longitude;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	UserEntity editedBy;
 }

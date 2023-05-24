@@ -1,10 +1,12 @@
 package rs.ac.ni.pmf.rwa.geodistance.data;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.transaction.annotation.Transactional;
 import rs.ac.ni.pmf.rwa.geodistance.core.LocationProvider;
 import rs.ac.ni.pmf.rwa.geodistance.core.model.Location;
 import rs.ac.ni.pmf.rwa.geodistance.data.dao.LocationDao;
 import rs.ac.ni.pmf.rwa.geodistance.data.dao.UserDao;
+import rs.ac.ni.pmf.rwa.geodistance.data.entity.LocationEntity;
 import rs.ac.ni.pmf.rwa.geodistance.data.entity.UserEntity;
 import rs.ac.ni.pmf.rwa.geodistance.data.mapper.LocationEntityMapper;
 import rs.ac.ni.pmf.rwa.geodistance.shared.Gender;
@@ -39,13 +41,18 @@ public class MemoryLocationProvider implements LocationProvider
 	}
 
 	@Override
+	@Transactional
 	public Optional<Location> getLocation(final String postalCode)
 	{
-		final Location location = locationDao.findById(postalCode)
-				.map(LocationEntityMapper::fromEntity)
-				.orElse(null);
+		final LocationEntity locationEntity = locationDao.findById(postalCode).orElseThrow();
 
-		return Optional.ofNullable(location);
+		System.out.println(locationEntity.getEditedBy().getFullName());
+
+//		final Location location =
+//				.map(LocationEntityMapper::fromEntity)
+//				.orElse(null);
+
+		return Optional.ofNullable(LocationEntityMapper.fromEntity(locationEntity));
 	}
 
 	@Override
