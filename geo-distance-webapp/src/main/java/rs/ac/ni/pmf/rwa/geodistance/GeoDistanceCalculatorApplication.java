@@ -5,12 +5,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
-import rs.ac.ni.pmf.rwa.geodistance.data.dao.LocationDao;
-import rs.ac.ni.pmf.rwa.geodistance.data.dao.UserDao;
-import rs.ac.ni.pmf.rwa.geodistance.data.entity.LocationEntity;
-import rs.ac.ni.pmf.rwa.geodistance.data.entity.UserEntity;
 
 
 @SpringBootApplication(exclude = {
@@ -26,41 +20,17 @@ public class GeoDistanceCalculatorApplication
 	}
 
 	@Bean
-	public CommandLineRunner afterInit(final UserDao userDao, final LocationDao locationDao)
+	public CommandLineRunner afterInit(final SomeComponent service)
 	{
 		return args -> {
-			initializeData(userDao, locationDao);
-
-//			viewData(userDao);
+//			service.initializeData();
+//			service.initializeData2();
+			service.initializeData3();
+//			service.showUsers();
+//
+			service.viewData();
 		};
 	}
 //
-//	@Transactional(propagation = Propagation.REQUIRED, readOnly = true)
-//	public void viewData(final UserDao userDao)
-//	{
-//		final UserEntity user = userDao.findById(1).orElseThrow();
-//		System.out.println(user.getFullName());
-//	}
 
-	public void initializeData(final UserDao userDao, final LocationDao locationDao)
-	{
-		userDao.save(UserEntity.builder().firstName("Pera").lastName("Peric").build());
-
-		final UserEntity user = userDao.findById(1).orElseThrow();
-//		System.out.println(user);
-		locationDao.save(
-				LocationEntity.builder()
-						.postalCode("AB10 1XG")
-						.latitude(57.144156)
-						.longitude(-2.114864)
-						.editedBy(user)
-						.build());
-		locationDao.save(
-				LocationEntity.builder()
-						.postalCode("AB10 6RN")
-						.latitude(57.13787)
-						.longitude(-2.121487)
-						.editedBy(user)
-						.build());
-	}
 }

@@ -5,14 +5,9 @@ import org.springframework.transaction.annotation.Transactional;
 import rs.ac.ni.pmf.rwa.geodistance.core.LocationProvider;
 import rs.ac.ni.pmf.rwa.geodistance.core.model.Location;
 import rs.ac.ni.pmf.rwa.geodistance.data.dao.LocationDao;
-import rs.ac.ni.pmf.rwa.geodistance.data.dao.UserDao;
 import rs.ac.ni.pmf.rwa.geodistance.data.entity.LocationEntity;
-import rs.ac.ni.pmf.rwa.geodistance.data.entity.UserEntity;
 import rs.ac.ni.pmf.rwa.geodistance.data.mapper.LocationEntityMapper;
-import rs.ac.ni.pmf.rwa.geodistance.shared.Gender;
 
-import java.time.LocalDate;
-import java.time.Month;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,7 +41,7 @@ public class MemoryLocationProvider implements LocationProvider
 	{
 		final LocationEntity locationEntity = locationDao.findById(postalCode).orElseThrow();
 
-		System.out.println(locationEntity.getEditedBy().getFullName());
+		System.out.println("TEST: " + locationEntity.getEditedBy().getFullName());
 
 //		final Location location =
 //				.map(LocationEntityMapper::fromEntity)
