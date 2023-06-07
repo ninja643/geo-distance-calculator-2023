@@ -1,6 +1,7 @@
 package rs.ac.ni.pmf.rwa.geodistance.rest;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +19,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Slf4j
 @Tag(name = "Locations API", description = "CRUD operations for locations")
+@SecurityRequirement(name = "GeoDistanceAPI")
 public class LocationRestController
 {
 	private final LocationService locationService;
