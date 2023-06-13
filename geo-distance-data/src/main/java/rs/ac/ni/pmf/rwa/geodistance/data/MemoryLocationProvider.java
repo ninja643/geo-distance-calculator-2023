@@ -39,15 +39,18 @@ public class MemoryLocationProvider implements LocationProvider
 	@Transactional
 	public Optional<Location> getLocation(final String postalCode)
 	{
-		final LocationEntity locationEntity = locationDao.findById(postalCode).orElseThrow();
+		final Optional<LocationEntity> optionalLocationEntity = locationDao.findById(postalCode);
 
-		System.out.println("TEST: " + locationEntity.getEditedBy().getFullName());
+		if (optionalLocationEntity.isEmpty())
+		{
+			return Optional.empty();
+		}
 
-//		final Location location =
-//				.map(LocationEntityMapper::fromEntity)
-//				.orElse(null);
+		final Location location = optionalLocationEntity
+				.map(LocationEntityMapper::fromEntity)
+				.orElse(null);
 
-		return Optional.ofNullable(LocationEntityMapper.fromEntity(locationEntity));
+		return Optional.ofNullable(location);
 	}
 
 	@Override

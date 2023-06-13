@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 
 @SpringBootApplication(exclude = {
-//		SecurityAutoConfiguration.class
+		SecurityAutoConfiguration.class
 //		DataSourceAutoConfiguration.class
 })
 @EnableTransactionManagement
